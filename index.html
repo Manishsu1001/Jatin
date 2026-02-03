@@ -1,5 +1,200 @@
-<html>
-  <body bgcolor="cyan">
-    <h2> Doing Great Manish</h2>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aadish Gupta - Newborn Announcement</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            font-family: 'Playfair Display', serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        .container {
+            background: rgba(255,255,255,0.95);
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .top-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #d63384;
+            margin-bottom: 1rem;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #ff69b4; }
+            to { text-shadow: 0 0 20px #ff1493, 0 0 30px #ff1493; }
+        }
+        .sharing-text {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .baby-boy {
+            font-size: 1.5rem;
+            color: #2196f3;
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+        .baby-img {
+            width: 150px;
+            height: 150px;
+            margin: 1rem auto;
+            background: linear-gradient(45deg, #bbdefb, #2196f3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 10px 20px rgba(33,150,243,0.3);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .baby-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #4a148c;
+            margin: 1rem 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: bounceIn 1.5s ease-out;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .baby-name:hover {
+            transform: scale(1.05);
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .parents {
+            font-size: 1.2rem;
+            color: #e91e63;
+            margin: 1.5rem 0 0.5rem 0;
+            font-style: italic;
+        }
+        .grandparents {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 1.5rem;
+        }
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+            border-radius: 25px;
+        }
+        .heart {
+            position: absolute;
+            color: #ff4081;
+            font-size: 1.5rem;
+            animation: heartFloat 4s linear infinite;
+        }
+        @keyframes heartFloat {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        .click-msg {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #999;
+            cursor: pointer;
+        }
+        .click-msg:hover {
+            color: #d63384;
+        }
+        @media (max-width: 600px) {
+            .container { margin: 1rem; padding: 2rem 1.5rem; }
+            .baby-name { font-size: 2.8rem; }
+            .top-text { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    <div class="container">
+        <div class="top-text">With Immense Joy and Gratitude</div>
+        <div class="sharing-text">Radha Rani & Raj Kumar Gupta</div>
+        <div class="sharing-text">sharing arrival of their grandson</div>
+        <div class="sharing-text">on our sweet</div>
+        <div class="baby-boy">👶 Baby Boy</div>
+        <div class="baby-img">🧸</div>
+        <h1 class="baby-name" onclick="toggleAnimation()">Aadish Gupta</h1>
+        <div class="parents">Overjoyed Parents:</div>
+        <div class="sharing-text">Garima & Shubham Gupta</div>
+        <div class="grandparents">Proud Grandparents:</div>
+        <div class="sharing-text">Harshmarjeet & Lovepreet Gupta</div>
+        <div class="click-msg" onclick="toggleAnimation()">💖 Click name for celebration! 💖</div>
+    </div>
+    <script>
+        // Floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.getElementById('hearts').appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 800);
+
+        // Confetti surprise on click
+        function toggleAnimation() {
+            document.querySelector('.container').style.animation = 'none';
+            setTimeout(() => {
+                document.querySelector('.container').style.animation = 'fadeInUp 1s ease-out';
+            }, 10);
+            
+            const confetti = [];
+            for (let i = 0; i < 50; i++) {
+                confetti.push(document.createElement('div'));
+                confetti[i].style.cssText = `
+                    position: fixed; left: ${Math.random() * 100}vw; top: 100vh;
+                    width: 10px; height: 10px; background: ${
+                        ['#ff4081', '#2196f3', '#ffeb3b', '#4caf50'][Math.floor(Math.random()*4)]
+                    };
+                    border-radius: 50%; pointer-events: none;
+                    animation: confettiFall ${Math.random()*3+2}s linear forwards;
+                `;
+                document.body.appendChild(confetti[i]);
+            }
+            const style = document.createElement('style');
+            style.textContent = `@keyframes confettiFall { to { transform: translateY(-100vh) rotate(720deg); } }`;
+            document.head.appendChild(style);
+            setTimeout(() => {
+                confetti.forEach(c => c.remove());
+                style.remove();
+            }, 5000);
+        }
+    </script>
+</body>
 </html>
